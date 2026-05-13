@@ -30,25 +30,19 @@
                 <h3 class="text-lg font-medium text-gray-900 mb-4">Select Your Preferred Schedule</h3>
                 
                 <div class="space-y-4">
-                    <label class="relative flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50 transition-colors {{ old('schedule_type') === 'semi_monthly' ? 'border-blue-500 bg-blue-50' : 'border-gray-300' }}">
-                        <input type="radio" name="schedule_type" value="semi_monthly" {{ old('schedule_type') === 'semi_monthly' ? 'checked' : '' }} class="sr-only peer" required>
-                        <div class="flex items-center w-full">
-                            <div class="w-5 h-5 border-2 border-gray-300 rounded-full mr-3 peer-checked:border-blue-600 peer-checked:bg-blue-600"></div>
-                            <div class="flex-1">
-                                <div class="font-medium text-gray-900">Every 15th of the Month</div>
-                                <div class="text-sm text-gray-500">Receive salary twice a month (15th and end of month)</div>
-                            </div>
+                    <label class="relative flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50 transition-colors {{ old('schedule_type') === 'semi_monthly' ? 'border-green-500 bg-green-50' : 'border-gray-300' }}">
+                        <input type="radio" name="schedule_type" value="semi_monthly" {{ old('schedule_type') === 'semi_monthly' ? 'checked' : '' }} class="w-5 h-5 mr-3 cursor-pointer" required style="accent-color: #10b981;">
+                        <div class="flex-1">
+                            <div class="font-medium text-gray-900">Every 15th of the Month</div>
+                            <div class="text-sm text-gray-500">Receive salary twice a month (15th and end of month)</div>
                         </div>
                     </label>
                     
-                    <label class="relative flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50 transition-colors {{ old('schedule_type') === 'monthly' ? 'border-blue-500 bg-blue-50' : 'border-gray-300' }}">
-                        <input type="radio" name="schedule_type" value="monthly" {{ old('schedule_type') === 'monthly' ? 'checked' : '' }} class="sr-only peer" required>
-                        <div class="flex items-center w-full">
-                            <div class="w-5 h-5 border-2 border-gray-300 rounded-full mr-3 peer-checked:border-blue-600 peer-checked:bg-blue-600"></div>
-                            <div class="flex-1">
-                                <div class="font-medium text-gray-900">Full Month</div>
-                                <div class="text-sm text-gray-500">Receive salary once a month (end of month)</div>
-                            </div>
+                    <label class="relative flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50 transition-colors {{ old('schedule_type') === 'monthly' ? 'border-green-500 bg-green-50' : 'border-gray-300' }}">
+                        <input type="radio" name="schedule_type" value="monthly" {{ old('schedule_type') === 'monthly' ? 'checked' : '' }} class="w-5 h-5 mr-3 cursor-pointer" required style="accent-color: #10b981;">
+                        <div class="flex-1">
+                            <div class="font-medium text-gray-900">Full Month</div>
+                            <div class="text-sm text-gray-500">Receive salary once a month (end of month)</div>
                         </div>
                     </label>
                 </div>

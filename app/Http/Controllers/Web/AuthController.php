@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Account;
+use App\Models\LoginLog;
 use App\Helpers\TimezoneHelper;
 use App\Mail\PasswordResetMail;
 use Illuminate\Http\Request;
@@ -51,6 +52,21 @@ class AuthController extends Controller
         
         // Update last login time with proper timezone handling
         $account->updateLastLogin();
+
+        // Keep login activity working across legacy/new login_logs schema
+        // without blocking successful authentication.
+        try {
+            LoginLog::recordForAccount(
+                $account,
+                $request->ip(),
+                $request->userAgent()
+            );
+        } catch (\Throwable $e) {
+            \Log::warning('Failed to record login log', [
+                'account_id' => $account->id,
+                'error' => $e->getMessage(),
+            ]);
+        }
 
         $request->session()->regenerate();
 

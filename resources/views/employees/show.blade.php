@@ -345,11 +345,17 @@
             <div class="space-y-6">
                 <!-- Employee Avatar -->
                 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center">
-                    <div class="mx-auto h-24 w-24 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center mb-4">
-                        <span class="text-2xl font-bold text-white">
-                            {{ strtoupper(substr($employee->first_name, 0, 1) . substr($employee->last_name, 0, 1)) }}
-                        </span>
-                    </div>
+                    @if($employee->account?->photo)
+                        <img src="{{ asset('storage/profile-photos/' . $employee->account->photo) }}" 
+                             alt="{{ $employee->full_name }}" 
+                             class="mx-auto h-24 w-24 rounded-full object-cover border-4 border-blue-500 mb-4">
+                    @else
+                        <div class="mx-auto h-24 w-24 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center mb-4">
+                            <span class="text-2xl font-bold text-white">
+                                {{ strtoupper(substr($employee->first_name, 0, 1) . substr($employee->last_name, 0, 1)) }}
+                            </span>
+                        </div>
+                    @endif
                     <h3 class="text-lg font-medium text-gray-900">{{ $employee->full_name }}</h3>
                     <p class="text-sm text-gray-500">{{ $employee->position }}</p>
                     <p class="text-sm text-gray-500">{{ $employee->department->name }}</p>

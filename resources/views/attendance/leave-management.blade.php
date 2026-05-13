@@ -201,7 +201,15 @@
                     @forelse($leaveRequests as $leaveRequest)
                         @php
                             $employee = $leaveRequest->employee;
-                            $initials = strtoupper(substr($employee->first_name ?? '', 0, 1) . substr($employee->last_name ?? '', 0, 1));
+                            if (!$employee) {
+                                $employee = (object)[
+                                    'first_name' => 'Unknown',
+                                    'last_name' => 'Employee',
+                                    'full_name' => 'Unknown Employee',
+                                    'department' => (object)['name' => 'No Department']
+                                ];
+                            }
+                            $initials = strtoupper(substr($employee->first_name ?? 'U', 0, 1) . substr($employee->last_name ?? 'E', 0, 1));
                             $statusColors = [
                                 'pending' => 'bg-yellow-100 text-yellow-800',
                                 'approved' => 'bg-green-100 text-green-800',
@@ -213,7 +221,7 @@
                                 'sick' => 'bg-red-100 text-red-800',
                                 'personal' => 'bg-purple-100 text-purple-800',
                                 'emergency' => 'bg-orange-100 text-orange-800',
-                                'maternity' => 'bg-pink-100 text-pink-800',
+                                'maternity' => 'bg-pink-100 bg-pink-800',
                                 'paternity' => 'bg-indigo-100 text-indigo-800',
                                 'bereavement' => 'bg-gray-100 text-gray-800',
                                 'study' => 'bg-teal-100 text-teal-800'
@@ -297,7 +305,15 @@
                 @forelse($leaveRequests as $leaveRequest)
                     @php
                         $employee = $leaveRequest->employee;
-                        $initials = strtoupper(substr($employee->first_name ?? '', 0, 1) . substr($employee->last_name ?? '', 0, 1));
+                        if (!$employee) {
+                            $employee = (object)[
+                                'first_name' => 'Unknown',
+                                'last_name' => 'Employee',
+                                'full_name' => 'Unknown Employee',
+                                'department' => (object)['name' => 'No Department']
+                            ];
+                        }
+                        $initials = strtoupper(substr($employee->first_name ?? 'U', 0, 1) . substr($employee->last_name ?? 'E', 0, 1));
                         $statusColors = [
                             'pending' => 'bg-yellow-100 text-yellow-800',
                             'approved' => 'bg-green-100 text-green-800',
@@ -648,13 +664,13 @@ function showNotification(message, type = 'success') {
     }, 5000);
 }
 
-function updateLeaveStatus(leaveRequestId, status) {
-    if (!confirm(`Are you sure you want to ${status} this leave request?`)) {
+function updateLeaveStatus(leaveRequestId, action) {
+    if (!confirm(`Are you sure you want to ${action} this leave request?`)) {
         return;
     }
     
     let rejectionReason = null;
-    if (status === 'rejected') {
+    if (action === 'reject') {
         rejectionReason = prompt('Please provide a reason for rejection:');
         if (!rejectionReason || rejectionReason.trim() === '') {
             showNotification('Rejection reason is required.', 'error');
@@ -666,9 +682,9 @@ function updateLeaveStatus(leaveRequestId, status) {
     
     // Build request body - only include rejection_reason if rejecting
     const requestBody = {
-        status: status
+        action: action
     };
-    if (status === 'rejected' && rejectionReason) {
+    if (action === 'reject' && rejectionReason) {
         requestBody.rejection_reason = rejectionReason;
     }
     
@@ -764,14 +780,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const action = btn.getAttribute('data-action');
         
         if (action === 'approve') {
-            updateLeaveStatus(leaveId, 'approved');
+            updateLeaveStatus(leaveId, 'approve');
         } else if (action === 'reject') {
-            updateLeaveStatus(leaveId, 'rejected');
+            updateLeaveStatus(leaveId, 'reject');
         } else if (action === 'cancel') {
             cancelLeaveRequest(leaveId);
         }
     });
-    });
+});
 </script>
 
 <!-- Set Leave Balance Modal -->

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 
 class HrController extends Controller
@@ -36,50 +37,37 @@ class HrController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:accounts,email,' . $user->id,
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'phone' => 'nullable|string|max:20',
-            'date_of_birth' => 'nullable|date|before:today',
-            'civil_status' => 'nullable|string|max:50',
-            'gender' => 'nullable|in:Male,Female,Other',
-            'mobile_number' => 'nullable|string|max:20',
-            'facebook_link' => 'nullable|url|max:255',
-            'linkedin_link' => 'nullable|url|max:255',
-            'ig_link' => 'nullable|url|max:255',
-            'home_address' => 'nullable|string|max:500',
-            'current_address' => 'nullable|string|max:500',
-            'emergency_full_name' => 'nullable|string|max:255',
-            'emergency_relationship' => 'nullable|string|max:100',
-            'emergency_home_address' => 'nullable|string|max:500',
-            'emergency_current_address' => 'nullable|string|max:500',
-            'emergency_mobile_number' => 'nullable|string|max:20',
-            'emergency_email' => 'nullable|email|max:255',
-            'emergency_facebook_link' => 'nullable|url|max:255',
         ]);
 
         try {
+            // Handle photo upload
+            if ($request->hasFile('photo')) {
+                $photo = $request->file('photo');
+                $photoName = time() . '_' . $photo->getClientOriginalName();
+                
+                // Store using Laravel's storage system
+                $path = $photo->storeAs('profile-photos', $photoName, 'public');
+                
+                // Delete old photo if exists
+                if ($user->photo) {
+                    Storage::disk('public')->delete('profile-photos/' . $user->photo);
+                }
+                
+                $user->photo = $photoName;
+                $user->save();
+            }
+
             // Update account email
-            $user->update(['email' => $validated['email']]);
+            $user->email = $validated['email'];
+            $user->save();
 
             // Update employee information
             $employee->update([
                 'first_name' => $validated['first_name'],
                 'last_name' => $validated['last_name'],
                 'phone' => $validated['phone'],
-                'date_of_birth' => $validated['date_of_birth'],
-                'civil_status' => $validated['civil_status'],
-                'gender' => $validated['gender'],
-                'mobile_number' => $validated['mobile_number'],
-                'facebook_link' => $validated['facebook_link'],
-                'linkedin_link' => $validated['linkedin_link'],
-                'ig_link' => $validated['ig_link'],
-                'home_address' => $validated['home_address'],
-                'current_address' => $validated['current_address'],
-                'emergency_full_name' => $validated['emergency_full_name'],
-                'emergency_relationship' => $validated['emergency_relationship'],
-                'emergency_home_address' => $validated['emergency_home_address'],
-                'emergency_current_address' => $validated['emergency_current_address'],
-                'emergency_mobile_number' => $validated['emergency_mobile_number'],
-                'emergency_email' => $validated['emergency_email'],
-                'emergency_facebook_link' => $validated['emergency_facebook_link'],
             ]);
 
             return response()->json([

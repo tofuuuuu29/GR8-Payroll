@@ -48,6 +48,9 @@ if (typeof window.showConfirmationModal === 'undefined') {
     window.showConfirmationModal = function(modalId, onConfirm, message = null) {
         console.log('[showConfirmationModal] Called with:', { modalId, hasCallback: typeof onConfirm === 'function', hasMessage: !!message });
         
+        // Store handler to prevent infinite recursion
+        window._showConfirmationModalHandler = window.showConfirmationModal;
+        
         const modal = document.getElementById(modalId);
         if (!modal) {
             console.error('[showConfirmationModal] Modal not found:', modalId);

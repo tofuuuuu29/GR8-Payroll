@@ -78,38 +78,38 @@ unset($__defined_vars, $__key, $__value); ?>
                  x-transition:leave="transition ease-in duration-150"
                  x-transition:leave-start="opacity-100 transform scale-100"
                  x-transition:leave-end="opacity-0 transform scale-95"
-                 class="ml-8 mt-2 space-y-1 bg-gray-50 rounded-lg p-2 border border-gray-200">
-                <a href="<?php echo e(route('employees.index')); ?>" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'employees.index' ? 'bg-white text-blue-600' : ''); ?>">
+                 class="ml-8 mt-2 space-y-1 bg-transparent rounded-lg p-0 border-0">
+                <a href="<?php echo e(route('employees.index')); ?>" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'employees.index' ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>">
                     <i class="fas fa-list mr-3 text-sm text-gray-400 group-hover:text-blue-600 <?php echo e($activeRoute === 'employees.index' ? 'text-blue-600' : ''); ?>"></i>
                     <span>Employee List</span>
                 </a>
-                <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-md transition-all duration-200 group">
+                <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-600 rounded-md transition-all duration-200 group">
                     <i class="fas fa-circle text-red-500 mr-2 text-xs"></i>
                     <i class="fas fa-id-card mr-3 text-sm text-gray-400 group-hover:text-blue-600"></i>
                     <span>Employee Info</span>
                 </a>
-                <a href="<?php echo e(route('employees.other-employee-info')); ?>" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'employees.other-employee-info' ? 'bg-white text-blue-600' : ''); ?>">
+                <a href="<?php echo e(route('employees.other-employee-info')); ?>" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'employees.other-employee-info' ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>">
                     <i class="fas fa-user-circle mr-3 text-sm text-gray-400 group-hover:text-blue-600 <?php echo e($activeRoute === 'employees.other-employee-info' ? 'text-blue-600' : ''); ?>"></i>
                     <span>Other Employee Info</span>
                 </a>
-                <a href="<?php echo e(route('employees.education-training-rating')); ?>" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'employees.education-training-rating' ? 'bg-white text-blue-600' : ''); ?>">
+                <a href="<?php echo e(route('employees.education-training-rating')); ?>" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'employees.education-training-rating' ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>">
                     <i class="fas fa-book mr-3 text-sm text-gray-400 group-hover:text-blue-600 <?php echo e($activeRoute === 'employees.education-training-rating' ? 'text-blue-600' : ''); ?>"></i>
                     <span>Education/Training/Rating</span>
                 </a>
-                <a href="<?php echo e(route('employees.prev-emp-oth')); ?>" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'employees.prev-emp-oth' ? 'bg-white text-blue-600' : ''); ?>">
+                <a href="<?php echo e(route('employees.prev-emp-oth')); ?>" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'employees.prev-emp-oth' ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>">
                     <i class="fas fa-briefcase mr-3 text-sm text-gray-400 group-hover:text-blue-600 <?php echo e($activeRoute === 'employees.prev-emp-oth' ? 'text-blue-600' : ''); ?>"></i>
                     <span>Previous Employer & Other</span>
                 </a>
-                <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-md transition-all duration-200 group">
+                <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-600 rounded-md transition-all duration-200 group">
                     <i class="fas fa-circle text-red-500 mr-2 text-xs"></i>
                     <i class="fas fa-file-alt mr-3 text-sm text-gray-400 group-hover:text-blue-600"></i>
                     <span>Documents</span>
                 </a>
-                <a href="<?php echo e(route('employees.ytd-info')); ?>" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'employees.ytd-info' ? 'bg-white text-blue-600' : ''); ?>">
+                <a href="<?php echo e(route('employees.ytd-info')); ?>" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'employees.ytd-info' ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>">
                     <i class="fas fa-passport mr-3 text-sm text-gray-400 group-hover:text-blue-600 <?php echo e($activeRoute === 'employees.ytd-info' ? 'text-blue-600' : ''); ?>"></i>
                     <span>YTD - INFO</span>
                 </a>
-                <a href="<?php echo e(route('employees.bio-zk')); ?>" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'employees.bio-zk' ? 'bg-white text-blue-600' : ''); ?>">
+                <a href="<?php echo e(route('employees.bio-zk')); ?>" class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'employees.bio-zk' ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>">
                     <i class="fas fa-dna mr-3 text-sm text-gray-400 group-hover:text-blue-600 <?php echo e($activeRoute === 'employees.bio-zk' ? 'text-blue-600' : ''); ?>"></i>
                     <span>Bio ZK</span>
                 </a>
@@ -178,15 +178,13 @@ unset($__defined_vars, $__key, $__value); ?>
                  x-transition:leave="transition ease-in duration-150"
                  x-transition:leave-start="opacity-100 transform scale-100"
                  x-transition:leave-end="opacity-0 transform scale-95"
-                 class="ml-8 mt-2 space-y-1 bg-gray-50 rounded-lg p-2 border border-gray-200">
-                
-                <!-- Time In/Out - Only show for employees -->
+                 class="ml-8 mt-2 space-y-1 bg-transparent rounded-lg p-0 border-0">
                 <?php if($user->role === 'employee'): ?>
                 <?php
                     $timeInOutDisabled = !$isCurrentlyTimedIn;
                 ?>
                 <a href="<?php echo e($timeInOutDisabled ? '#' : route('attendance.time-in-out')); ?>" 
-                   class="flex items-center px-3 py-2 text-sm <?php echo e($timeInOutDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-white hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.time-in-out' ? 'bg-white text-blue-600' : ''); ?>"
+                   class="flex items-center px-3 py-2 text-sm <?php echo e($timeInOutDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-blue-100 hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.time-in-out' ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>"
                    <?php echo e($timeInOutDisabled ? 'onclick="return false;"' : ''); ?>>
                     <i class="fas fa-sign-in-alt mr-3 text-sm <?php echo e($timeInOutDisabled ? 'text-gray-300' : 'text-gray-400 group-hover:text-blue-600'); ?> <?php echo e($activeRoute === 'attendance.time-in-out' ? 'text-blue-600' : ''); ?>"></i>
                     <span>Time In/Out</span>
@@ -199,7 +197,7 @@ unset($__defined_vars, $__key, $__value); ?>
                     $dailyDisabled = $user->role === 'employee' && !$isCurrentlyTimedIn;
                 ?>
                 <a href="<?php echo e($dailyDisabled ? '#' : route('attendance.daily')); ?>" 
-                   class="flex items-center px-3 py-2 text-sm <?php echo e($dailyDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-white hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.daily' ? 'bg-white text-blue-600' : ''); ?>"
+                   class="flex items-center px-3 py-2 text-sm <?php echo e($dailyDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-blue-100 hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.daily' ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>"
                    <?php echo e($dailyDisabled ? 'onclick="return false;"' : ''); ?>>
                     <i class="fas fa-calendar-day mr-3 text-sm <?php echo e($dailyDisabled ? 'text-gray-300' : 'text-gray-400 group-hover:text-blue-600'); ?> <?php echo e($activeRoute === 'attendance.daily' ? 'text-blue-600' : ''); ?>"></i>
                     <span>Attendance Record</span>
@@ -210,7 +208,7 @@ unset($__defined_vars, $__key, $__value); ?>
                     $timekeepingDisabled = $user->role === 'employee' && !$isCurrentlyTimedIn;
                 ?>
                 <a href="<?php echo e($timekeepingDisabled ? '#' : route('attendance.timekeeping')); ?>" 
-                   class="flex items-center px-3 py-2 text-sm <?php echo e($timekeepingDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-white hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.timekeeping' ? 'bg-white text-blue-600' : ''); ?>"
+                   class="flex items-center px-3 py-2 text-sm <?php echo e($timekeepingDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-blue-100 hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.timekeeping' ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>"
                    <?php echo e($timekeepingDisabled ? 'onclick="return false;"' : ''); ?>>
                     <i class="fas fa-stopwatch mr-3 text-sm <?php echo e($timekeepingDisabled ? 'text-gray-300' : 'text-gray-400 group-hover:text-blue-600'); ?> <?php echo e($activeRoute === 'attendance.timekeeping' ? 'text-blue-600' : ''); ?>"></i>
                     <span>Timekeeping</span>
@@ -221,7 +219,7 @@ unset($__defined_vars, $__key, $__value); ?>
                     $importDtrDisabled = $user->role === 'employee' && !$isCurrentlyTimedIn;
                 ?>
                 <a href="<?php echo e($importDtrDisabled ? '#' : route('attendance.import-dtr')); ?>" 
-                   class="flex items-center px-3 py-2 text-sm <?php echo e($importDtrDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-white hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.import-dtr' ? 'bg-white text-blue-600' : ''); ?>"
+                   class="flex items-center px-3 py-2 text-sm <?php echo e($importDtrDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-blue-100 hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.import-dtr' ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>"
                    <?php echo e($importDtrDisabled ? 'onclick="return false;"' : ''); ?>>
                     <i class="fas fa-file-import mr-3 text-sm <?php echo e($importDtrDisabled ? 'text-gray-300' : 'text-gray-400 group-hover:text-blue-600'); ?> <?php echo e($activeRoute === 'attendance.import-dtr' ? 'text-blue-600' : ''); ?>"></i>
                     <span>Import DTR</span>
@@ -234,9 +232,9 @@ unset($__defined_vars, $__key, $__value); ?>
                     $scheduleDisabled = $user->role === 'employee' && !$isCurrentlyTimedIn;
                 ?>
                 <a href="<?php echo e($scheduleDisabled ? '#' : route('schedule-v2.index')); ?>" 
-                   class="flex items-center px-3 py-2 text-sm <?php echo e($scheduleDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-white hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'schedule-v2.index' ? 'bg-white text-blue-600' : ''); ?>"
+                   class="flex items-center px-3 py-2 text-sm <?php echo e($scheduleDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-blue-100 hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e(in_array($activeRoute, ['schedule-v2.index', 'schedule-v2.create', 'schedule-v2.show', 'schedule-v2.edit']) ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>"
                    <?php echo e($scheduleDisabled ? 'onclick="return false;"' : ''); ?>>
-                    <i class="fas fa-calendar-plus mr-3 text-sm <?php echo e($scheduleDisabled ? 'text-gray-300' : 'text-gray-400 group-hover:text-blue-600'); ?> <?php echo e($activeRoute === 'schedule-v2.index' ? 'text-blue-600' : ''); ?>"></i>
+                    <i class="fas fa-calendar-plus mr-3 text-sm <?php echo e($scheduleDisabled ? 'text-gray-300' : 'text-gray-400 group-hover:text-blue-600'); ?> <?php echo e(in_array($activeRoute, ['schedule-v2.index', 'schedule-v2.create', 'schedule-v2.show', 'schedule-v2.edit']) ? 'text-blue-600' : ''); ?>"></i>
                     <span>Schedule Management</span>
                 </a>
                 <?php endif; ?>
@@ -246,7 +244,7 @@ unset($__defined_vars, $__key, $__value); ?>
                     $overtimeDisabled = $user->role === 'employee' && !$isCurrentlyTimedIn;
                 ?>
                 <a href="<?php echo e($overtimeDisabled ? '#' : route('attendance.overtime')); ?>" 
-                   class="flex items-center px-3 py-2 text-sm <?php echo e($overtimeDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-white hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.overtime' ? 'bg-white text-blue-600' : ''); ?>"
+                   class="flex items-center px-3 py-2 text-sm <?php echo e($overtimeDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-blue-100 hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.overtime' ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>"
                    <?php echo e($overtimeDisabled ? 'onclick="return false;"' : ''); ?>>
                     <i class="fas fa-clock mr-3 text-sm <?php echo e($overtimeDisabled ? 'text-gray-300' : 'text-gray-400 group-hover:text-blue-600'); ?> <?php echo e($activeRoute === 'attendance.overtime' ? 'text-blue-600' : ''); ?>"></i>
                     <span>Overtime</span>
@@ -257,7 +255,7 @@ unset($__defined_vars, $__key, $__value); ?>
                     $leaveDisabled = $user->role === 'employee' && !$isCurrentlyTimedIn;
                 ?>
                 <a href="<?php echo e($leaveDisabled ? '#' : route('attendance.leave-management')); ?>" 
-                   class="flex items-center px-3 py-2 text-sm <?php echo e($leaveDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-white hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.leave-management' ? 'bg-white text-blue-600' : ''); ?>"
+                   class="flex items-center px-3 py-2 text-sm <?php echo e($leaveDisabled ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-blue-100 hover:text-blue-600'); ?> rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.leave-management' ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>"
                    <?php echo e($leaveDisabled ? 'onclick="return false;"' : ''); ?>>
                     <i class="fas fa-calendar-times mr-3 text-sm <?php echo e($leaveDisabled ? 'text-gray-300' : 'text-gray-400 group-hover:text-blue-600'); ?> <?php echo e($activeRoute === 'attendance.leave-management' ? 'text-blue-600' : ''); ?>"></i>
                     <span>Leave Management</span>
@@ -265,8 +263,8 @@ unset($__defined_vars, $__key, $__value); ?>
                 
                 <!-- Period Management -->
                 <a href="<?php echo e(route('attendance.period-management.index')); ?>" 
-                   class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-white hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e($activeRoute === 'attendance.period-management.index' ? 'bg-white text-blue-600' : ''); ?>">
-                    <i class="fas fa-calendar-week mr-3 text-sm text-gray-400 group-hover:text-blue-600 <?php echo e($activeRoute === 'attendance.period-management.index' ? 'text-blue-600' : ''); ?>"></i>
+                   class="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-600 rounded-md transition-all duration-200 group <?php echo e(in_array($activeRoute, ['attendance.period-management.index', 'attendance.period-management.create', 'attendance.period-management.show']) ? 'bg-blue-100 text-blue-700 font-semibold border-l-4 border-blue-600 pl-2' : ''); ?>">
+                    <i class="fas fa-calendar-week mr-3 text-sm text-gray-400 group-hover:text-blue-600 <?php echo e(in_array($activeRoute, ['attendance.period-management.index', 'attendance.period-management.create', 'attendance.period-management.show']) ? 'text-blue-600' : ''); ?>"></i>
                     <span>Period Management</span>
                     <?php if($user->role !== 'employee'): ?>
                     <span class="ml-auto bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded-full">New</span>
@@ -629,26 +627,26 @@ unset($__defined_vars, $__key, $__value); ?>
             <?php endif; ?>
 
             <!-- Update Profile -->
-            <a href="<?php echo e(route('hr.profile')); ?>" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-lg transition-all duration-200 group">
-                <i class="fas fa-edit mr-3 text-lg text-gray-400 group-hover:text-blue-600"></i>
+            <a href="<?php echo e(route('hr.profile')); ?>" class="flex items-center px-4 py-3 text-sm font-medium <?php echo e(request()->routeIs('hr.profile') ? 'text-blue-600 bg-blue-50 border-r-4 border-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'); ?> rounded-lg transition-all duration-200 group">
+                <i class="fas fa-edit mr-3 text-lg <?php echo e(request()->routeIs('hr.profile') ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600'); ?>"></i>
                 <span>Update Profile</span>
             </a>
 
             <!-- Contact HR -->
-            <a href="<?php echo e(route('hr.contact.index')); ?>" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-lg transition-all duration-200 group">
-                <i class="fas fa-question-circle mr-3 text-lg text-gray-400 group-hover:text-blue-600"></i>
+            <a href="<?php echo e(route('hr.contact.index')); ?>" class="flex items-center px-4 py-3 text-sm font-medium <?php echo e(request()->routeIs('hr.contact.*') ? 'text-blue-600 bg-blue-50 border-r-4 border-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'); ?> rounded-lg transition-all duration-200 group">
+                <i class="fas fa-question-circle mr-3 text-lg <?php echo e(request()->routeIs('hr.contact.*') ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600'); ?>"></i>
                 <span>Contact HR</span>
             </a>
 
             <!-- Help & Support -->
-            <a href="<?php echo e(route('hr.help-support')); ?>" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-lg transition-all duration-200 group">
-                <i class="fas fa-life-ring mr-3 text-lg text-gray-400 group-hover:text-blue-600"></i>
+            <a href="<?php echo e(route('hr.help-support')); ?>" class="flex items-center px-4 py-3 text-sm font-medium <?php echo e(request()->routeIs('hr.help-support') ? 'text-blue-600 bg-blue-50 border-r-4 border-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'); ?> rounded-lg transition-all duration-200 group">
+                <i class="fas fa-life-ring mr-3 text-lg <?php echo e(request()->routeIs('hr.help-support') ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600'); ?>"></i>
                 <span>Help & Support</span>
             </a>
 
             <!-- Salary Schedule Request -->
-            <a href="<?php echo e(route('salary-schedule.index')); ?>" class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-lg transition-all duration-200 group">
-                <i class="fas fa-calendar-alt mr-3 text-lg text-gray-400 group-hover:text-blue-600"></i>
+            <a href="<?php echo e(route('salary-schedule.index')); ?>" class="flex items-center px-4 py-3 text-sm font-medium <?php echo e(request()->routeIs('salary-schedule.*') ? 'text-blue-600 bg-blue-50 border-r-4 border-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'); ?> rounded-lg transition-all duration-200 group">
+                <i class="fas fa-calendar-alt mr-3 text-lg <?php echo e(request()->routeIs('salary-schedule.*') ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600'); ?>"></i>
                 <span>Salary Schedule</span>
             </a>
         <?php endif; ?>
@@ -724,10 +722,11 @@ function format12HourTime(date) {
 
 // Show confirmation modal (similar to dashboard)
 function showConfirmationModal(title, message, confirmAction, options = {}) {
-    // Check if the modal exists in the main dashboard
-    if (typeof window.showConfirmationModal === 'function') {
-        // Use the dashboard's modal function
-        window.showConfirmationModal(title, message, confirmAction, options);
+    // Check if there's a proper modal element in the DOM and call the registered handler
+    const modalExists = document.getElementById('confirmationModal');
+    if (modalExists && typeof window._showConfirmationModalHandler === 'function') {
+        // Use the dashboard's modal function with correct parameters
+        window._showConfirmationModalHandler('confirmationModal', confirmAction, message);
         return;
     }
     

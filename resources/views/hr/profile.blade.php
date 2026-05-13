@@ -27,8 +27,25 @@
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                 <!-- Profile Picture -->
                 <div class="text-center">
-                    <div class="w-24 h-24 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-user text-white text-2xl"></i>
+                    <div class="relative inline-block">
+                        <img id="profile-photo-preview" 
+                             src="{{ $user->photo ? asset('storage/profile-photos/' . $user->photo) : '' }}" 
+                             alt="Profile Photo" 
+                             class="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-4 border-blue-500 {{ $user->photo ? '' : 'hidden' }}">
+                        <div id="profile-photo-placeholder" class="w-24 h-24 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 {{ $user->photo ? 'hidden' : '' }}">
+                            <i class="fas fa-user text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="photo-upload" class="cursor-pointer inline-flex items-center px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm text-gray-700 transition-colors">
+                            <i class="fas fa-camera mr-2"></i>
+                            Change Photo
+                        </label>
+                        <input type="file" id="photo-upload" name="photo" accept="image/jpeg,image/png,image/jpg,image/gif" class="hidden">
+                        <p id="photo-name" class="text-xs text-gray-500 mt-1"></p>
+                        @error('photo')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900">{{ $employee ? $employee->full_name : $user->full_name }}</h3>
                     <p class="text-sm text-gray-500">{{ $user->email }}</p>
@@ -91,7 +108,7 @@
                     <h3 class="text-lg font-semibold text-gray-900">Personal Information</h3>
                 </div>
                 <div class="p-6">
-                    <form id="profile-form" method="POST" action="{{ route('hr.profile.update') }}" class="space-y-6">
+                    <form id="profile-form" method="POST" action="{{ route('hr.profile.update') }}" enctype="multipart/form-data" class="space-y-6">
                         @csrf
                         @method('PUT')
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -483,20 +500,59 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const profileForm = document.getElementById('profile-form');
+    const photoInput = document.getElementById('photo-upload');
+    const photoPreview = document.getElementById('profile-photo-preview');
+    const photoPlaceholder = document.getElementById('profile-photo-placeholder');
+    const photoName = document.getElementById('photo-name');
+    
+    // Handle photo selection preview
+    if (photoInput) {
+        photoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            
+            if (file) {
+                photoName.textContent = file.name;
+                
+                // Show preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    photoPreview.src = e.target.result;
+                    photoPreview.classList.remove('hidden');
+                    photoPlaceholder.classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                photoName.textContent = '';
+                photoPreview.classList.add('hidden');
+                photoPlaceholder.classList.remove('hidden');
+            }
+        });
+    }
     
     if (profileForm) {
         profileForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const submitBtn = profileForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
+            const submitBtn = document.querySelector('button[form="profile-form"]');
+            const originalText = submitBtn ? submitBtn.innerHTML : 'Save Changes';
             
             // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Saving...';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Saving...';
+            }
             
             try {
                 const formData = new FormData(profileForm);
+                
+                // Remove photo field if no file selected
+                if (!photoInput || photoInput.files.length === 0) {
+                    formData.delete('photo');
+                } else {
+                    // Manually append the photo file if selected
+                    formData.append('photo', photoInput.files[0]);
+                }
+                
                 const response = await fetch(profileForm.action, {
                     method: 'POST',
                     headers: {
@@ -530,12 +586,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             } catch (error) {
-                console.error('Error updating profile:', error);
                 showNotification('Failed to update profile. Please try again.', 'error');
             } finally {
                 // Restore button state
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }
             }
         });
     }

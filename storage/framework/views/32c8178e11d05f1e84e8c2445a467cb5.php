@@ -31,9 +31,15 @@ unset($__defined_vars, $__key, $__value); ?>
 <div class="w-full p-4 border-t border-brand-black/10 bg-brand-surface flex-shrink-0">
     <div class="flex items-center">
         <div class="flex-shrink-0">
-            <div class="w-10 h-10 bg-gradient-to-r from-brand-green to-brand-red rounded-xl flex items-center justify-center shadow-lg">
-                <i class="fas fa-user text-brand-white text-sm"></i>
-            </div>
+            <?php if($user->photo): ?>
+                <img src="<?php echo e(asset('storage/profile-photos/' . $user->photo)); ?>" 
+                     alt="<?php echo e($user->full_name); ?>" 
+                     class="w-10 h-10 rounded-xl object-cover border-2 border-brand-green shadow-lg">
+            <?php else: ?>
+                <div class="w-10 h-10 bg-gradient-to-r from-brand-green to-brand-red rounded-xl flex items-center justify-center shadow-lg">
+                    <i class="fas fa-user text-brand-white text-sm"></i>
+                </div>
+            <?php endif; ?>
         </div>
         <div class="ml-3 flex-1">
             <p class="text-sm font-semibold text-brand-black"><?php echo e($user->full_name); ?></p>

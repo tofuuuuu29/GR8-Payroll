@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LoginLog extends Model
 {
@@ -22,7 +23,7 @@ class LoginLog extends Model
         'updated_at' => 'datetime',
     ];
 
-    public function account()
+    public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class, 'account_id');
     }
@@ -37,5 +38,14 @@ class LoginLog extends Model
             'account_id', // Local key on login_logs table
             'employee_id' // Local key on accounts table
         );
+    }
+
+    public static function recordForAccount(Account $account, string $ipAddress = null, string $userAgent = null): self
+    {
+        return self::create([
+            'account_id' => $account->id,
+            'ip_address' => $ipAddress,
+            'user_agent' => $userAgent,
+        ]);
     }
 }

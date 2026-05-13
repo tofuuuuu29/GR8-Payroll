@@ -462,9 +462,15 @@
             <!-- User Menu Dropdown -->
             <div class="relative" x-data="{ open: false }">
                 <button @click="open = !open" class="flex items-center space-x-1 sm:space-x-2 p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 transition-colors">
-                    <div class="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
-                        <i class="fas fa-user text-white text-xs sm:text-sm"></i>
-                    </div>
+                    @if($user->photo)
+                        <img src="{{ asset('storage/profile-photos/' . $user->photo) }}" 
+                             alt="{{ $user->full_name }}" 
+                             class="w-6 h-6 sm:w-8 sm:h-8 rounded-full object-cover border-2 border-blue-500">
+                    @else
+                        <div class="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-white text-xs sm:text-sm"></i>
+                        </div>
+                    @endif
                     <span class="hidden lg:block text-sm font-medium text-gray-700">{{ $user->full_name }}</span>
                     <i class="fas fa-chevron-down text-gray-400 text-xs hidden sm:block" :class="{ 'rotate-180': open }"></i>
                 </button>

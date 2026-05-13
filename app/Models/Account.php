@@ -20,6 +20,7 @@ class Account extends Authenticatable
     protected $fillable = [
         'employee_id',
         'email',
+        'photo',
         'password',
         'password_reset_token',
         'password_reset_expires_at',

@@ -1,5 +1,8 @@
+<?php
+    $darkMode = session('user_preferences.dark_mode', false);
+?>
 <!DOCTYPE html>
-<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>" class="<?php echo e($darkMode ? 'dark' : ''); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -222,6 +225,8 @@
     updateTime();
     setInterval(updateTime, 60000);
     </script>
+    
+    <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
 </html>
 <?php /**PATH C:\GR8TECH_Payroll-master\resources\views/layouts/dashboard-base.blade.php ENDPATH**/ ?>

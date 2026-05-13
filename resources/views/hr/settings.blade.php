@@ -423,6 +423,22 @@
 </div>
 
 <script>
+// Dark mode toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const darkModeToggle = document.querySelector('input[name="dark_mode"]');
+    
+    // Toggle dark mode immediately when checkbox changes
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    }
+});
+
 function showTab(tabName) {
     // Hide all tab contents
     const contents = document.querySelectorAll('.tab-content');
@@ -738,14 +754,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Save preference to session via AJAX
             fetch('{{ route("hr.settings.update") }}', {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                    dark_mode: isDark ? 1 : 0
+                    dark_mode: isDark ? true : false
                 })
             })
             .then(response => {

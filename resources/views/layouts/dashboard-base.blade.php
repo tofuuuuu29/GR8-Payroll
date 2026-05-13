@@ -1,5 +1,8 @@
+@php
+    $darkMode = session('user_preferences.dark_mode', false);
+@endphp
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="{{ $darkMode ? 'dark' : '' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -184,5 +187,7 @@
     updateTime();
     setInterval(updateTime, 60000);
     </script>
+    
+    @stack('scripts')
 </body>
 </html>
