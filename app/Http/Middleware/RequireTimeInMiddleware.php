@@ -41,25 +41,45 @@ class RequireTimeInMiddleware
             return $next($request);
         }
 
-        // Allow access to dashboard, logout, time-in/out routes, company switching,
+        // Allow access to dashboard, logout, time-in/out UI and API routes, company switching,
         // and forgot-time support routes regardless of time-in status
         if ($request->routeIs([
             'dashboard',
             'logout',
+            'attendance.time-in-out',
             'attendance.time-in',
             'attendance.time-out',
+            'attendance.break-start',
+            'attendance.break-end',
+            'attendance.status',
+            'attendance.current-time',
             'companies.switch',
             'companies.index',
             'hr.help-support',
             'hr.help-support-ticket-store',
+            'hr.profile',
+            'hr.profile.update',
+            'hr.settings',
+            'hr.settings.update',
+            'hr.settings.password',
         ])) {
             return $next($request);
         }
 
-        // Check if employee has timed in today AND hasn't timed out yet
+        // Check if employee has timed in today AND hasn't timed out yet (legacy row + time_entries)
         $todayAttendance = $employee->getTodayAttendance();
 
-        if (!$todayAttendance || !$todayAttendance->time_in || $todayAttendance->time_out) {
+        $hasActiveClockIn = $todayAttendance
+            && $todayAttendance->time_in
+            && !$todayAttendance->time_out;
+
+        if (!$hasActiveClockIn && $todayAttendance) {
+            $todayAttendance->loadMissing('timeEntries');
+            $hasActiveClockIn = $todayAttendance->timeEntries
+                ->contains(fn ($e) => $e->time_in && $e->time_out === null);
+        }
+
+        if (!$hasActiveClockIn) {
             return redirect()->route('dashboard')
                 ->with('error', 'You must be currently timed in to access other modules.');
         }

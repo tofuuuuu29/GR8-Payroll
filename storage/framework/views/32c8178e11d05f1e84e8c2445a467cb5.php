@@ -43,7 +43,7 @@ unset($__defined_vars, $__key, $__value); ?>
         </div>
         <div class="ml-3 flex-1">
             <p class="text-sm font-semibold text-brand-black"><?php echo e($user->full_name); ?></p>
-            <p class="text-xs text-brand-black/70"><?php echo e(ucfirst($user->role)); ?> • <?php echo e($user->employee->department->name ?? 'System'); ?></p>
+            <p class="text-xs text-brand-black/70"><?php echo e(ucfirst($user->role)); ?> • <?php echo e($user->employee?->department?->name ?? 'System'); ?></p>
         </div>
         <div class="flex items-center space-x-2">
             <!-- Status indicator -->

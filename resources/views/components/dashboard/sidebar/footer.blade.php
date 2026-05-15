@@ -15,7 +15,7 @@
         </div>
         <div class="ml-3 flex-1">
             <p class="text-sm font-semibold text-brand-black">{{ $user->full_name }}</p>
-            <p class="text-xs text-brand-black/70">{{ ucfirst($user->role) }} • {{ $user->employee->department->name ?? 'System' }}</p>
+            <p class="text-xs text-brand-black/70">{{ ucfirst($user->role) }} • {{ $user->employee?->department?->name ?? 'System' }}</p>
         </div>
         <div class="flex items-center space-x-2">
             <!-- Status indicator -->

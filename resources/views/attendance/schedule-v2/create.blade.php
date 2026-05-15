@@ -114,7 +114,7 @@
                                     </div>
                                     @else
                                     <!-- For employees, use their own ID -->
-                                    <input type="hidden" name="employee_id" value="{{ $user->employee->id ?? '' }}">
+                                    <input type="hidden" name="employee_id" value="{{ $user->employee?->id ?? '' }}">
                                     @endif
                                 </div>
                             @endif

@@ -1,11 +1,5 @@
 <?php $__env->startSection('title', 'Employee Dashboard'); ?>
 
-<?php
-    $user = auth()->user();
-    $pageTitle = 'Employee Dashboard';
-    $activeRoute = 'dashboard';
-?>
-
 <?php $__env->startSection('content'); ?>
 <!-- Confirmation Modal -->
 <div id="confirmation-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">

@@ -2,12 +2,6 @@
 
 @section('title', 'Manager Dashboard')
 
-@php
-    $user = auth()->user();
-    $pageTitle = 'Manager Dashboard';
-    $activeRoute = 'dashboard';
-@endphp
-
 @section('content')
     <!-- Welcome Section -->
     <div class="mb-6 sm:mb-8">

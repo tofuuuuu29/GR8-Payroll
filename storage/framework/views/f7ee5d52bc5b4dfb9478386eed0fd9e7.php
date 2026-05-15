@@ -101,7 +101,7 @@
                                 <i class="fas fa-times"></i>
                             </button>
                             <?php endif; ?>
-                            <?php if($request->status === 'pending' && ($user->role === 'employee' || $request->employee_id === $user->employee->id)): ?>
+                            <?php if($request->status === 'pending' && ($user->role === 'employee' || $request->employee_id === $user->employee?->id)): ?>
                             <form method="POST" action="<?php echo e(route('salary-schedule.destroy', $request->id)); ?>" class="inline" onsubmit="return confirm('Are you sure you want to delete this request?');">
                                 <?php echo csrf_field(); ?>
                                 <?php echo method_field('DELETE'); ?>

@@ -72,7 +72,14 @@ class RoleBasedDashboardController extends Controller
             ->withSum('employees', 'salary')
             ->get();
 
-        return view('dashboards.admin', compact('stats', 'recent_employees', 'department_stats'));
+        return view('dashboards.admin', array_merge(
+            compact('stats', 'recent_employees', 'department_stats'),
+            [
+                'user' => auth()->user(),
+                'pageTitle' => 'Admin Dashboard',
+                'activeRoute' => 'dashboard',
+            ]
+        ));
     }
 
     private function hrDashboard()
@@ -110,7 +117,14 @@ class RoleBasedDashboardController extends Controller
         
         $department_breakdown = $department_breakdown->withCount('employees')->get();
 
-        return view('dashboards.hr', compact('stats', 'recent_employees', 'department_breakdown'));
+        return view('dashboards.hr', array_merge(
+            compact('stats', 'recent_employees', 'department_breakdown'),
+            [
+                'user' => auth()->user(),
+                'pageTitle' => 'HR Dashboard',
+                'activeRoute' => 'dashboard',
+            ]
+        ));
     }
 
     private function managerDashboard($user)
@@ -153,11 +167,18 @@ class RoleBasedDashboardController extends Controller
             ->limit(6)
             ->get();
 
-        return view('dashboards.manager', compact(
-            'stats',
-            'department_employees',
-            'monthly_payroll_summary',
-            'department'
+        return view('dashboards.manager', array_merge(
+            compact(
+                'stats',
+                'department_employees',
+                'monthly_payroll_summary',
+                'department'
+            ),
+            [
+                'user' => $user,
+                'pageTitle' => 'Manager Dashboard',
+                'activeRoute' => 'dashboard',
+            ]
         ));
     }
 
@@ -204,13 +225,20 @@ class RoleBasedDashboardController extends Controller
             ->orderBy('date', 'desc')
             ->get();
 
-        return view('dashboards.employee', compact(
-            'stats',
-            'recent_payrolls',
-            'yearly_summary',
-            'employee',
-            'todayAttendance',
-            'recentActivity'
+        return view('dashboards.employee', array_merge(
+            compact(
+                'stats',
+                'recent_payrolls',
+                'yearly_summary',
+                'employee',
+                'todayAttendance',
+                'recentActivity'
+            ),
+            [
+                'user' => $user,
+                'pageTitle' => 'Employee Dashboard',
+                'activeRoute' => 'dashboard',
+            ]
         ));
     }
 }

@@ -98,7 +98,7 @@
                                 <i class="fas fa-times"></i>
                             </button>
                             @endif
-                            @if($request->status === 'pending' && ($user->role === 'employee' || $request->employee_id === $user->employee->id))
+                            @if($request->status === 'pending' && ($user->role === 'employee' || $request->employee_id === $user->employee?->id))
                             <form method="POST" action="{{ route('salary-schedule.destroy', $request->id) }}" class="inline" onsubmit="return confirm('Are you sure you want to delete this request?');">
                                 @csrf
                                 @method('DELETE')

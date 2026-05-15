@@ -2,12 +2,6 @@
 
 @section('title', 'HR Dashboard')
 
-@php
-    $user = auth()->user();
-    $pageTitle = 'HR Dashboard';
-    $activeRoute = 'dashboard';
-@endphp
-
 @section('content')
             <!-- Welcome Section -->
             <div class="mb-6 sm:mb-8">

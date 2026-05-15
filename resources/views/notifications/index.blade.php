@@ -1,4 +1,6 @@
-@extends('layouts.dashboard-base')
+@extends('layouts.dashboard-base', ['user' => $user, 'activeRoute' => 'notifications.index', 'pageTitle' => 'Notifications'])
+
+@section('title', 'Notifications')
 
 @section('content')
 <div class="bg-gray-100 min-h-screen py-8 px-4 md:px-8">
